@@ -50,6 +50,10 @@ class pixel
     //Operator == return true si deux pixels sont egaux
     bool operator ==(pixel pix);
 
+    //affiche les coordonnes , niveau de gris et voisins de pixel 
+    void afficher_donnes_pixel();
+
+    void test_fonctionement_pixel();
 };
 
 #endif
