@@ -7,6 +7,9 @@ class pixel
 
     unsigned char niveau_de_gris;
 
+    unsigned int x;
+    unsigned int y;
+
     unsigned int ouest;
     unsigned int est;
     unsigned int nord;
@@ -20,8 +23,8 @@ class pixel
 
     //Constructeur par recopie, prend en parametres les valeurs de 
     //niveau_de_gris, ouest, est, nord, sud 
-    pixel(unsigned char ndg, unsigned int ou, unsigned int es, unsigned int no, unsigned int su);
-    
+    pixel(unsigned int x, unsigned int y, unsigned char ndg);
+
     //Destructeur par desaut
     ~pixel();
 
@@ -31,11 +34,15 @@ class pixel
 
     // procedure remplir_voisins_pixel [entiers posotoves ou , es, no ,su]
     //remplit les voisinages de pixel
-    void remplir_voisins_pixel(unsigned int ou, unsigned int es, unsigned int no, unsigned int su);  
+    void remplir_voisins_pixel();  
 
 
-    //Procedure qui fait la meme fonctionement que le constructeur par recopie regarder ligne 21
-    void deconstruir_pixel(unsigned char ndg, unsigned int ou, unsigned int es, unsigned int no, unsigned int su);
+    //Procedure deconstruir_pixel  - remplit les couleurs et des voisins de 
+    void refair_pixel(unsigned char ndg, unsigned int x1 , unsigned int y1);
+
+    // procedure remplir_coordonnes [entiers x y ] - identifie la place 
+    //de pixel dans la grille 
+    void remplir_coordonnes(unsigned int x1 , unsigned int y1);
 
     // Operator =
     void operator =(pixel pix);
