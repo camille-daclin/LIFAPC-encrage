@@ -6,13 +6,13 @@ using namespace std;
 
 pixel::pixel()
 {
-    x = -1;
-    y = -1;
+    x = 1000;
+    y = 1000;
     niveau_de_gris = 0;
-    ouest = -1;
-    est = -1;
-    nord = -1;
-    sud = -1;
+    ouest = 1000;
+    est = 1000;
+    nord = 1000;
+    sud = 1000;
 }
 
 pixel::pixel(unsigned int x1, unsigned int y1, unsigned char ndg)
@@ -38,7 +38,7 @@ void pixel::remplir_couleur_pixel(unsigned char ndg)
 
 void pixel::remplir_voisins_pixel()
 {
-    if(x != -1 && y != -1)
+    if(x != 1000 && y != 1000)
     {
         ouest = x - 1;
         est = x + 1;
@@ -79,5 +79,38 @@ bool pixel::operator ==(pixel pix)
     }else
     {
         return false;
+    }
+}
+
+void pixel::afficher_donnes_pixel()
+{
+    cout << "couleur: " << niveau_de_gris << "; x: " << x << "; y: "<< y << " voisins: ";
+    cout <<"Nord(" << nord << "," << y <<") ";
+    cout <<"Sud(" << sud << "," << y <<") ";
+    cout <<"Est(" << x << "," << est <<") ";
+    cout <<"Ouest(" << x << "," << ouest <<") "<<endl; 
+}
+
+
+void pixel::test_fonctionement_pixel()
+{
+    pixel p1;
+    pixel p2(10,11,124);
+    p1.afficher_donnes_pixel();
+    p2.afficher_donnes_pixel();
+
+    p1.remplir_couleur_pixel(224);
+    p1.afficher_donnes_pixel();
+    p1.remplir_coordonnes(14,16);
+    p1.afficher_donnes_pixel();
+
+    p1.refair_pixel(44,43,11);
+    p1.afficher_donnes_pixel();
+
+    pixel p3;
+    p3 = p2;
+    if(p3 == p2)
+    {
+        p3.afficher_donnes_pixel();
     }
 }
