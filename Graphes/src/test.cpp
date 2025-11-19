@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    pixel p;
+    Pixel p;
     p.test_fonctionement_pixel();
     return 0;
 }

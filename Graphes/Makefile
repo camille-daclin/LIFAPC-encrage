@@ -1,5 +1,11 @@
 all: bin/test
 
+bin:
+	mkdir -p bin
+
+obj:
+	mkdir -p obj
+
 bin/test: obj/test.o obj/pixel.o
 		g++ -Wall -g obj/test.o obj/pixel.o -o bin/test.exe
 
