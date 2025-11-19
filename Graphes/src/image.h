@@ -11,6 +11,7 @@ class Image{
         int largeur;
 
     public:
+        Image (const string);
 
 };
 
@@ -19,6 +20,17 @@ class Graph{
         Image *image;
         Pixel *pixel;
     public:
+        Graph(Image, int, int);
+        ~Graph();
+
+        int get_nord(int);
+        int get_sud(int);
+        int get_est(int);
+        int get_ouest(int);
+
+        
+
+
 };
 
 #endif
