@@ -1,14 +1,21 @@
 #include <iosteam>
+#include <cmath>
 #include "image.h"
 
-Image::Image
+Image::Image(const *string im){
+
+}
+
 //Destructeur on enlève tout les pixels chargés dans le graphe
 Graph::~Graph(){
     delete pixel;
 }
 
-int Graph::get_global(){
-    
+int Graph::get_valuation(pixel *p, pixel *q){
+    float a,b;
+    a = pow(p->capacite - q->capacite,2);
+    b = 2 * pow(p->ndg,2);
+    return a + b;   
 }
 
 int Graph::get_nord(int i){
@@ -33,4 +40,8 @@ int Graph::get_ouest(int i){
     if ((i+image->largeur) % image->largeur == 0)
         return -1
     return i-1;
+}
+
+void Graph::afficher(){
+
 }
