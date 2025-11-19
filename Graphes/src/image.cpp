@@ -7,12 +7,12 @@ Image::Image(const *string im){
 }
 
 Graph::Graph(Image im, float a, float b){
-    
+    int indice;
     image = new Image (im);
     p = new pixel[im.hauteur * im.largeur];
     for (int i=0, i< im.hauteur, i++){
         for (int j = 0, j< im.largeur, j++){
-            
+            indice =
         }
     }
 }

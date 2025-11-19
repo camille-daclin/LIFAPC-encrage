@@ -21,7 +21,7 @@ class Graph{
         Pixel *pixel;
     public:
         //Constructeur - Destructeur
-        Graph(Image im, float i, float j);
+        Graph(Image im, float i, floatgit j);
         ~Graph();
 
         //Fonctions pour avoir la capacité des arcs vers ses voisins
