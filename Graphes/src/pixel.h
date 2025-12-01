@@ -1,92 +1,78 @@
-#ifndef Pixel_
-#define Pixel_
+#ifndef PIXEL_H
+#define PIXEL_H
 
 class Pixel
 {
     private:
-
-    //couleur de pixel
-    unsigned char niveau_de_gris;
-
-    //cordonnais de pixel
-    unsigned int x;
-    unsigned int y;
-
-
-    // les valeurs de voisins
-    unsigned int ouest;
-    unsigned int capacite_ouest;
-    unsigned int flot_ouest;
-
-
-    unsigned int est;
-    unsigned int capacite_est;
-    unsigned int flot_est;
-
-    unsigned int nord;
-    unsigned int capacite_nord;
-    unsigned int flot_nord;
-
-    unsigned int sud;
-    unsigned int capacite_sud;
-    unsigned int flot_sud;
-
-
+        // Couleur du pixel
+        unsigned char niveau_de_gris;
+        
+        // Coordonnées du pixel
+        unsigned int x;
+        unsigned int y;
+        
+        // Capacités vers les 4 voisins
+        unsigned int capacite_ouest;
+        unsigned int capacite_est;
+        unsigned int capacite_nord;
+        unsigned int capacite_sud;
+        
+        // Flots vers les 4 voisins
+        unsigned int flot_ouest;
+        unsigned int flot_est;
+        unsigned int flot_nord;
+        unsigned int flot_sud;
+        
+        // Capacités et flots pour source et puit
+        unsigned int capacite_source;
+        unsigned int capacite_puit;
+        unsigned int flot_source;
+        unsigned int flot_puit;
 
     public:
-
-    //Constructeur par defaut toutes les voisins sont -1 et les 
-    //valeus de couleur mets en 0
-    Pixel();
-
-    //Constructeur par recopie, prend en parametres les valeurs de 
-    //niveau_de_gris, ouest, est, nord, sud 
-    Pixel(unsigned int x, unsigned int y, unsigned char ndg);
-
-    //Destructeur par desaut
-    ~Pixel();
-
-    //procedure remplir_Pixel [entier bdg] - prend en parametre le 
-    //niveau de gris et remplit la valeur dans Pixel 
-    void remplir_couleur_pixel(unsigned char ndg);
-
-    // procedure remplir_voisins_Pixel [entiers posotoves ou , es, no ,su]
-    //remplit les voisinages de Pixel
-    void remplir_voisins_pixel();  
-
-
-    //Procedure deconstruir_Pixel  - remplit les couleurs et des voisins de 
-    void refair_pixel(unsigned char ndg, unsigned int x1 , unsigned int y1);
-
-    // procedure remplir_coordonnes [entiers x y ] - identifie la place 
-    //de Pixel dans la grille 
-    void remplir_coordonnes(unsigned int x1 , unsigned int y1);
-
-    // Operator =
-    void operator =(Pixel pix);
-
-    //Operator == return true si deux Pixels sont egaux
-    bool operator ==(Pixel pix);
-
-    //return true si les deux pixels sont des voisins 
-    bool verifier_voisines(Pixel pix);
-
-    //procedudes de changement des capacites
-    void changer_capacite_ouest(unsigned int cap_ou);
-    void changer_capacite_est(unsigned int cap_es);
-    void changer_capacite_nord(unsigned int cap_no);
-    void changer_capacite_sud(unsigned int cap_su);
-
-    //procedudes de changement des flots
-    void changer_flot_ouest(unsigned int flot_ou);
-    void changer_flot_est(unsigned int flot_es);
-    void changer_flot_nord(unsigned int flot_no);
-    void changer_flot_sud(unsigned int flot_su);
-
-    //affiche les coordonnes , niveau de gris et voisins de Pixel 
-    void afficher_donnes_pixel();
-
-    void test_fonctionement_pixel();
+        // Constructeurs
+        Pixel();
+        Pixel(unsigned int x1, unsigned int y1, unsigned char ndg);
+        ~Pixel();
+        
+        // Getters
+        unsigned char get_niveau_gris() const { return niveau_de_gris; }
+        unsigned int get_x() const { return x; }
+        unsigned int get_y() const { return y; }
+        
+        unsigned int get_capacite_ouest() const { return capacite_ouest; }
+        unsigned int get_capacite_est() const { return capacite_est; }
+        unsigned int get_capacite_nord() const { return capacite_nord; }
+        unsigned int get_capacite_sud() const { return capacite_sud; }
+        unsigned int get_capacite_source() const { return capacite_source; }
+        unsigned int get_capacite_puit() const { return capacite_puit; }
+        
+        unsigned int get_flot_ouest() const { return flot_ouest; }
+        unsigned int get_flot_est() const { return flot_est; }
+        unsigned int get_flot_nord() const { return flot_nord; }
+        unsigned int get_flot_sud() const { return flot_sud; }
+        unsigned int get_flot_source() const { return flot_source; }
+        unsigned int get_flot_puit() const { return flot_puit; }
+ 
+        // Setters pour les capacités
+        void set_capacite_ouest(unsigned int cap) { capacite_ouest = cap; }
+        void set_capacite_est(unsigned int cap) { capacite_est = cap; }
+        void set_capacite_nord(unsigned int cap) { capacite_nord = cap; }
+        void set_capacite_sud(unsigned int cap) { capacite_sud = cap; }
+        void set_capacite_source(unsigned int cap) { capacite_source = cap; }
+        void set_capacite_puit(unsigned int cap) { capacite_puit = cap; }
+        
+        // Setters pour les flots
+        void set_flot_ouest(unsigned int f) { flot_ouest = f; }
+        void set_flot_est(unsigned int f) { flot_est = f; }
+        void set_flot_nord(unsigned int f) { flot_nord = f; }
+        void set_flot_sud(unsigned int f) { flot_sud = f; }
+        void set_flot_source(unsigned int f) { flot_source = f; }
+        void set_flot_puit(unsigned int f) { flot_puit = f; }
+        
+        void set_niveau_gris(unsigned char ndg) { niveau_de_gris = ndg; }
+        
+        void afficher_donnes_pixel();
 };
 
 #endif

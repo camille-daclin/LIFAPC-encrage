@@ -1,19 +1,30 @@
-all: bin/test
+# Compilation
+all: bin/encrage
 
-bin:
-	mkdir -p bin
+# Compilation de l'exécutable dans bin/
+bin/encrage: bin/main.o bin/image.o bin/pixel.o
+	g++ -Wall -std=c++11 -o bin/encrage bin/main.o bin/image.o bin/pixel.o -lm
 
-obj:
-	mkdir -p obj
+# Compilation des fichiers objets dans bin/
+bin/main.o: src/main.cpp src/image.h src/pixel.h
+	g++ -Wall -std=c++11 -c src/main.cpp -o bin/main.o
 
-bin/test: obj/test.o obj/pixel.o
-		g++ -Wall -g obj/test.o obj/pixel.o -o bin/test.exe
+bin/image.o: src/image.cpp src/image.h src/pixel.h
+	g++ -Wall -std=c++11 -c src/image.cpp -o bin/image.o
 
-obj/test.o: src/test.cpp src/pixel.h
-		g++ -Wall -g -c src/test.cpp -o obj/test.o
+bin/pixel.o: src/pixel.cpp src/pixel.h
+	g++ -Wall -std=c++11 -c src/pixel.cpp -o bin/pixel.o
 
-obj/pixel.o:  src/pixel.cpp src/pixel.h
-		g++  -Wall -g -c src/pixel.cpp -o obj/pixel.o
+# Nettoyage
+clean:
+	rm -f bin/*.o
 
-clean: 
-		rm obj/*.o
+mrproper: clean
+	rm -f bin/encrage
+
+# Test
+test: bin/encrage
+	./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100
+
+baboon: bin/encrage
+	./bin/encrage baboon.reduced.pgm resultat_baboon.pgm 5 400 100
