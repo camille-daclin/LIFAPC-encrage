@@ -22,7 +22,7 @@ clean:
 mrproper: clean
 	rm -f bin/encrage
 
-# Test
+# Test 
 test: bin/encrage
 	./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100
 

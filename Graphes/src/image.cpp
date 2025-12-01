@@ -526,3 +526,22 @@ void Image::sauvegarder(const string& fichier) const
     file.close();
     cout << "Image sauvegardee dans " << fichier << endl;
 }
+
+void Image::afficher_capacites() const
+{
+    cout << largeur << " " << hauteur << endl;
+    int total_pixels = largeur * hauteur;
+    cout << total_pixels << endl;
+    
+    for (int idx = 0; idx < total_pixels; idx++) {
+        cout << pixels[idx].get_capacite_source() << " ";
+        cout << pixels[idx].get_capacite_puit() << " ";
+        cout << pixels[idx].get_capacite_nord() << " ";
+        cout << pixels[idx].get_capacite_sud() << " ";
+        cout << pixels[idx].get_capacite_est() << " ";
+        cout << pixels[idx].get_capacite_ouest();
+        
+        // Ligne suivante tous les pixels (ou tous les N pixels si tu veux)
+        cout << endl;
+    }
+}

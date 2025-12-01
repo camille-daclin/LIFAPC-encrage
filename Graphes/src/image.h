@@ -72,6 +72,9 @@ public:
     // Constantes pour la source et le puit
     static const int SOURCE_IDX = -1;
     static const int PUIT_IDX = -2;
+
+    // Affichage des capacités (pour debug/vérification)
+    void afficher_capacites() const;         
 };
 
 #endif

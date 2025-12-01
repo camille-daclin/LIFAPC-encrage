@@ -31,6 +31,11 @@ int main(int argc, char* argv[])
     img.afficher();
     cout << endl;
     
+    // NOUVEAU : Afficher les capacités (optionnel)
+    cout << "=== Affichage des capacites (pour verification) ===" << endl;
+    img.afficher_capacites();
+    cout << endl;
+    
     // Calcul du flot maximal
     cout << "Etape 2: Calcul du flot maximal..." << endl;
     img.calculer_flot_maximal();
