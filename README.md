@@ -29,8 +29,8 @@ pas juste selon sa valeur absolue.
 
 ### Ligne de commande
 
-`./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100   
-./bin/encrage baboon.reduced.pgm resultat_baboon.pgm 5 400 100`
+`./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100`       
+`./bin/encrage baboon.reduced.pgm resultat_baboon.pgm 5 400 100`
 
 
 ### Avec Make
