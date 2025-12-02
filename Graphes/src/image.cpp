@@ -332,14 +332,12 @@ void Image::augmenter_flot(int* predecesseur, Direction* dir_pred, int idx_puit)
         if (pred == idx_source)
         {
             //src a pixel
-            cap_residuelle = pixels[courant].get_capacite_source() - 
-                            pixels[courant].get_flot_source();
+            cap_residuelle = pixels[courant].get_capacite_source() - pixels[courant].get_flot_source();
         }
         else if (courant == idx_puit)
         {
             // pixel a puit
-            cap_residuelle = pixels[pred].get_capacite_puit() - 
-                            pixels[pred].get_flot_puit();
+            cap_residuelle = pixels[pred].get_capacite_puit() -  pixels[pred].get_flot_puit();
         }
         else
         {
