@@ -245,7 +245,8 @@ int Image::chercher_chemin_ameliorant(int* predecesseur, Direction* dir_pred)
             }
         }
         // si sur pixel 
-        else if (courant < hauteur * largeur) {
+        else if (courant < hauteur * largeur)
+        {
             
             unsigned int cap_puit = pixels[courant].get_capacite_puit();
             unsigned int flot_puit = pixels[courant].get_flot_puit();
