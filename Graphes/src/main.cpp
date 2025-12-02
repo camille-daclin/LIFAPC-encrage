@@ -12,23 +12,28 @@ int main(int argc, char* argv[])
     float alpha = 2.0;
     int H = 100;
     
-    if (argc > 1) {
+    if (argc > 1) 
+    {
         fichier_source = argv[1];
     }
 
-    if (argc > 2){
+    if (argc > 2)
+    {
         fichier_res = argv[2];
     }
 
-    if (argc > 3){
+    if (argc > 3)
+    {
         sigma = atof(argv[3]);
     }
 
-    if (argc > 4){
+    if (argc > 4)
+    {
        alpha = atof(argv[4]); 
     } 
 
-    if (argc > 5){
+    if (argc > 5)
+    {
         H = atoi(argv[5]);
     } 
     
