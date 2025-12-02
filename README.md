@@ -1,114 +1,128 @@
-===========================================================================
-                     **Projet TP9 - Encrage d'image en noir et blanc**
-============================================================================
+# Projet LIFAPC :  Encrage d'images en noir et blanc
 
-Binôme : KUDRENKO Pavlo & DACLIN Camille
- 3 Décembre 2025 - LIFAPC
+[Enoncé du Projet](https://perso.liris.cnrs.fr/raphaelle.chaine/COURS/LIFAPC/tp09Encrage.pdf)
 
-================================================================================
-But du projet :
-================================================================================
+**👨‍💻KUDRENKO Pavlo & DACLIN Camille**  
+*3 Décembre 2025 - LIFAPC*
+
+---
+
+## 🎯 Objectif du projet
 
 On transforme une image en niveaux de gris en noir et blanc. Pour ça onn utilise un algorithme de flot maximal sur un graphe
 pour que l'algo tienne compte du contexte local de chaque pixel.
 
-En gros : un pixel gris sera noir ou blanc selon ce qu'il y a autour de lui,
+Pour faire simple : un pixel gris sera noir ou blanc selon ce qu'il y a autour de lui,
 pas juste selon sa valeur absolue.
 
-================================================================================
-COMMENT COMPILER
-================================================================================
+---
 
-    make            # Compile tout
-    make clean      # Vire les .o
+## 🚀 Compilation & Installation
 
-================================================================================
-COMMENT UTILISER
-================================================================================
-
-Soit on utilise la commande de base :
-
-    ./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100
-
-    ./bin/encrage baboon.reduced.pgm resultat_baboon.pgm  5 400 100
-
-Soit avec "make"  :
-
-    make test       # Test rapide sur petite image (4x4 pixels)
-    make baboon     # Test sur baboon (128x128)
+`make`           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Compile tout  
+`make clean `     &nbsp;:  Supprime les fichiers objets (.o)
 
 
-Paramètres :
-  - contraste local 
-  - pondération source/puit
-  - discrétisation (on y laisse à 100)
+---
 
-================================================================================
-CE QU'ON A OBTENU
-================================================================================
+## ⚙️ Utilisation
 
-test.pgm (4x4) :
-  - 9 itérations
-  - < 1 seconde
+### Ligne de commande
 
-baboon.reduced.pgm (128x128) :
-  - 18 054 itérations
-  - quelques secondes
+`./bin/encrage test.ascii.pgm resultat_test.pgm 30 2.0 100   
+./bin/encrage baboon.reduced.pgm resultat_baboon.pgm 5 400 100`
 
 
-Note : Le sujet parle d'un nombre d'itérations plus élevé mais c'est pour une image plus
-grande. Avec l'image baboon.pgm qu'on a ça marche bien.
+### Avec Make
 
-================================================================================
-ORGANISATION :
-================================================================================
+`make test` : Test rapide (4x4 pixels)   
+`make baboon` : Test sur baboon (128x128)
 
-src/
-  pixel.h / pixel.cpp     : Gère un pixel 
-  image.h / image.cpp     : Charge l'image, fait les calculs, algo de flot
-  main.cpp                : Lance tout
 
-bin/                      : Là où ça compile (fichiers .o)
+### Paramètres
 
-Makefile                  : Pour compiler
 
-test.ascii.pgm            : Petite image test
-baboon.reduced.pgm        : Image baboon
 
-================================================================================
-COMMENT ÇA MARCHE
-================================================================================
+- contraste local 
+- pondération source/puit
+- discrétisation (on y laisse toujours à 100)
+---
 
-1. On charge l'image en PGM
-2. On transforme chaque pixel en nœud d'un graphe
-3. On calcule des "capacités" entre les pixels selon leur ressemblance
-4. On fait passer un "flot" de la source (encre noire) au puit (poubelle)
-5. On cherche le flot maximum avec Ford-Fulkerson 
-6. À la fin, les pixels connectés à la source → noir, les autres → blanc
+## 📈 Performances obtenues
 
-================================================================================
-LES POINTS PLUS COMPLIQUES :
-================================================================================
+- test.pgm (4x4) :  
+  - 9 itérations    
+  - < 1 seconde
 
-- Comprendre la gestion de l'excédent quand on augmente le flot (arc retour)
-- Les pixels sur les bords ont moins de voisins → faut vérifier avant d'accéder
-- Le format PGM c'est largeur PUIS hauteur (on s'est fait avoir)
-- Débugger avec 16384 pixels c'est long
 
-================================================================================
-AMÉLIORATIONS POSSIBLES :
-================================================================================
+- baboon.reduced.pgm (128x128) :   
+  - 18 054 itérations   
+  - quelques secondes
 
-- Paralléliser les calculs
-- Faire une interface pour voir le flot en direct
-- Support du PGM binaire (on a fait que ASCII)
 
-================================================================================
-TESTÉ AVEC :
-================================================================================
 
-Machine personelle
-Linux (salles TP), g++
-Pas de bibliothèques externes
+**Note : Le sujet parle d'un nombre d'itérations plus élevé mais c'est pour une image plus
+grande. Avec l'image baboon.pgm qu'on a ça marche bien.**
+****
+---
 
-================================================================================
+## 📁 Organisation du projet
+
+ 
+src/   
+  pixel.h / pixel.cpp     &nbsp;&nbsp;&nbsp;&nbsp;: Gère un pixel    
+  image.h / image.cpp     : Charge l'image, fait les calculs, algo de flot    
+  main.cpp               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Lance tout
+
+
+bin/                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Là où ça compile (fichiers .o)
+
+
+Makefile                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Pour compiler
+
+
+test.ascii.pgm            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Petite image test   
+baboon.reduced.pgm        : Image baboon
+
+
+
+---
+
+## 🔬 Comment ça marche
+
+1. Chargement de l’image en format PGM ASCII 
+2. Transformation de chaque pixel en un nœud dans un graphe
+3. Calcul des capacités des arcs selon la ressemblance locale des pixels
+4. Passage d’un flot maximal de la source (noir) vers le puits (blanc)
+5. Calcul du flot maximal avec l’algorithme Ford-Fulkerson
+6. Conclusion : pixels connectés à la source → noir, pixels restants → blanc
+
+
+---
+
+## ⚠️ Points techniques délicats
+
+- Gestion des arcs retour et excédents lors de l’augmentation du flot
+- Traitement spécial pour les pixels en bord de l’image (car ils ont moins de voisins)
+- Le debug sur grandes images est long
+
+---
+
+## 🚀 Améliorations possibles
+
+- Parallélisation pour accélérer les calculs
+- Interface graphique pour visualiser le flot en temps réel
+- Support du format PGM binaire (seulement ASCII pour l’instant)
+
+---
+
+## 🖥️ Environnement de test
+
+- Machine personnelle  
+- Sous Linux
+- Compilateur g++ (sans bibliothèques externes)
+
+---
+
+**👨‍💻 Pavlo KUDRENKO & Camille DACLIN**  
+*Projet TP9 - LIFAPC 2025*
