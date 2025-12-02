@@ -15,8 +15,7 @@ class Pixel
         unsigned int capacite_ouest;
         unsigned int capacite_est;
         unsigned int capacite_nord;
-        unsigned int capacite_sud;
-        
+        unsigned int capacite_sud;    
         // Flots vers les 4 voisins
         unsigned int flot_ouest;
         unsigned int flot_est;
@@ -36,13 +35,13 @@ class Pixel
         Pixel(unsigned int x1, unsigned int y1, unsigned char ndg);
         ~Pixel();
         
-        //procedure get_niveau_gris [ne prend rien en parametre] et retourne le niveau de gris du pixel
+        //procedure get_niveau_gris [] et retourne le niveau de gris du pixel
         unsigned char get_niveau_gris() const 
         { 
             return niveau_de_gris; 
         }
 
-        //procedure get [ne prend rien en parametre] et retourne les coordonnées horizontale x ou y du pixel
+        //procedure get-[*] [] et retourne les coordonnées horizontale x ou y du pixel
         unsigned int get_x() const 
         { 
             return x; 
@@ -51,9 +50,8 @@ class Pixel
         { 
             return y; 
         }
-        
 
-        //procedure get_capacite [rien en paramètre] zt retourne la capacité de l'arc vers le pixel ouest/est/nord/sud
+        //procedure get_capacite_[*] [] zt retourne la capacité de l'arc vers le pixel ouest/est/nord/sud
         unsigned int get_capacite_ouest() const
         {
              return capacite_ouest; 
@@ -71,7 +69,7 @@ class Pixel
              return capacite_sud; 
         }
 
-        //procedure get_capacite(source/puit) [rien en paramètre] et retourne la capacité de 
+        //procedure get_capacite_[*] [] et retourne la capacité de 
         //l'arc depuis la source (encre noire) ou le puit (blanc)
         unsigned int get_capacite_source() const 
         {
@@ -82,7 +80,7 @@ class Pixel
              return capacite_puit; 
         }
 
-        //procedure get_flot [rien en paramètre] et retourne le flot actuel vers le pixel ouest/est/nord ou sud
+        //procedure get_flot_[*] [] et retourne le flot actuel vers le pixel ouest/est/nord ou sud
         unsigned int get_flot_ouest() const 
         {
              return flot_ouest; 
@@ -100,7 +98,7 @@ class Pixel
              return flot_sud; 
         }
 
-        //procedure get_flot(source ou puit) [rien en paramètre] et retourne le flot reçu depuis la source ou le puit
+        //procedure get_flot_[*] [] et retourne le flot reçu depuis la source ou le puit
         unsigned int get_flot_source() const 
         {
              return flot_source; 
@@ -110,7 +108,7 @@ class Pixel
              return flot_puit; 
         }
  
-        //procedure set_capacite [unsigned int cap] et fixe la capacité vers le pixel ouest/est/ nord ou sud
+        //procedure set_capacite_[*] [unsigned int cap] et fixe la capacité vers le pixel ouest/est/ nord ou sud
         void set_capacite_ouest(unsigned int cap) 
         { 
             capacite_ouest = cap; 
@@ -128,7 +126,7 @@ class Pixel
             capacite_sud = cap; 
         }
 
-        //procedure set_capacite(source ou puit) [unsigned int cap] et fixe la capacité depuis la source/puit
+        //procedure set_capacite_[*] [unsigned int cap] et fixe la capacité depuis la source/puit
         void set_capacite_source(unsigned int cap) 
         { 
             capacite_source = cap; 
@@ -138,7 +136,7 @@ class Pixel
             capacite_puit = cap; 
         }
         
-        //procedure set_flot [unsigned int f] et met à jour le flot vers le pixel ouest/est/nord ou sud
+        //procedure set_flot_[*] [unsigned int f] et met à jour le flot vers le pixel ouest/est/nord ou sud
         void set_flot_ouest(unsigned int f) 
         { 
             flot_ouest = f; 
@@ -156,7 +154,7 @@ class Pixel
              flot_sud = f; 
         }
 
-        //procedure set_flot [unsigned int f] et met à jour le flot envoyé à la source/puit
+        //procedure set_flot-[*] [unsigned int f] et met à jour le flot envoyé à la source/puit
         void set_flot_source(unsigned int f) 
         { 
             flot_source = f; 
@@ -170,8 +168,7 @@ class Pixel
         { 
             niveau_de_gris = ndg; 
         }
-        //procedure afficher_donnes_pixel [rien en parametre] et affiche toutes les informations du pixel 
+        //procedure afficher_donnes_pixel [] et affiche toutes les informations du pixel 
         void afficher_donnes_pixel();
 };
-
 #endif

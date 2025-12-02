@@ -23,7 +23,7 @@ class Image
         int H; 
 
     public:
-        // constructeur [string nom_fochier , flot sig , flot alp , flot h ] - ouvre une fichier nom_fochier de type png et le recopie dans la
+        // constructeur [string nom_fichier , flot sig , flot alp , flot h ] - ouvre une fichier nom_fochier de type png et le recopie dans la
         //structure Image  
         Image(const string& fichier, float sig, float alp, int h = 100);
 
@@ -48,7 +48,7 @@ class Image
         Pixel& get_pixel(int idx) { return pixels[idx]; }
         Pixel& get_pixel(int i, int j) { return pixels[indice(i, j)]; }
         
-        // fonctions a_voisin_nord [entier idx] - return true s`il existe une voisin de pixel qu coordonnes idx false sinon
+        // fonctions a_voisin_[*] [entier idx] - return true s`il existe un voisin de pixel du coordonnes idx false sinon
         bool a_voisin_nord(int idx) const { return idx >= largeur; }
         bool a_voisin_sud(int idx) const { return idx < (hauteur - 1) * largeur; }
         bool a_voisin_ouest(int idx) const { return (idx % largeur) != 0; }
